@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
 import styles from './header.module.scss'
 
+const prefix = process.env.PUBLIC_URL
+const bannerImage = prefix + '/assets/banner-normal.jpg'
+
 class Header extends Component {
   render() {
-    const bannerImage = '/assets/banner-normal.jpg'
-
     return (
       <header className={styles.header}>
         <div
@@ -13,7 +14,7 @@ class Header extends Component {
         <section className={styles.user}>
           <b className={styles.name}>Boldoo</b>
           <div className={styles.avatar}>
-            <img src="/assets/avatar-normal.jpeg" />
+            <img src={`${prefix}/assets/avatar-normal.jpg`} alt="" />
           </div>
         </section>
       </header>
