@@ -12,7 +12,11 @@ class Post extends Component {
       <div className={classnames(styles.images, wrapClass)}>
         {
           images.map(img => (
-            <img key={img} src={img} alt="" />
+            <div
+              key={img.id}
+              className={styles.img}
+              style={{ backgroundImage: `url(${img.url})`}}>
+            </div>
           ))
         }
       </div>
@@ -25,7 +29,7 @@ class Post extends Component {
     return (
       <div className={classnames(this.props.className, styles.post)}>
         <div className={styles.avatar}>
-          <img src={user.avatar} alt="" />
+          <img src={user.avatar} alt={user.username} />
         </div>
         <section>
           <div className={styles.username}>{ user.username }</div>

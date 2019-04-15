@@ -39,15 +39,44 @@
 }
 
 .images {
+  max-width: 246px;
   margin: 10px 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: -5px;
+  margin-left: -5px;
+
+  .img {
+    position: relative;
+    margin-left: 5px;
+    margin-top: 5px;
+    font-size: 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    &:after {
+      content: '';
+      display: block;
+      padding-top: 100%;
+    }
+  }
+
   img {
     max-width: 100%;
   }
 
   &:global(.len_1) {
-    img {
-      max-width: 180px;
+    grid-template-columns: 1fr;
+
+    .img {
+      max-height: 180px;
     }
+  }
+
+  &:global(.len_2),
+  &:global(.len_4) {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
