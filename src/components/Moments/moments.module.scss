@@ -1,7 +1,19 @@
 .moments {
   padding-top: 30px;
+  padding-bottom: 50px;
 }
 
 .post {
-  margin: 20px 0;
+  padding: 15px 12px 12px;
+
+  & +.post:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 1px;
+    background-color: rgba(#000, 0.3);
+    transform: scale3d(1, 0.5, 1);
+  }
 }

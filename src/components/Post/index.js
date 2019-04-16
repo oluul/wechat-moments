@@ -2,19 +2,29 @@ import React, { Component } from 'react'
 import moment from 'moment'
 import classnames from 'classnames'
 import styles from './post.module.scss'
+import initPhotoSwipeFromDOM from './lib.gallery'
 
 class Post extends Component {
+  componentDidMount() {
+    this.gallery && initPhotoSwipeFromDOM(this.gallery, this.props.post.id)
+  }
+
   renderImages() {
     const { images } = this.props.post
     const wrapClass = 'len_' + images.length
 
     return (
-      <div className={classnames(styles.images, wrapClass)}>
+      <div
+        ref={ref => this.gallery = ref}
+        className={classnames(styles.images, wrapClass)}>
         {
           images.map(img => (
             <div
               key={img.id}
-              className={styles.img}
+              className={classnames('g-item', styles.img)}
+              data-width={img.w}
+              data-height={img.h}
+              data-url={img.url}
               style={{ backgroundImage: `url(${img.url})`}}>
             </div>
           ))

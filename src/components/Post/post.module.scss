@@ -1,18 +1,6 @@
 .post {
   position: relative;
   display: flex;
-  padding: 0 12px 12px;
-
-  &:after {
-    content: '';
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    height: 1px;
-    background-color: rgba(#000, 0.3);
-    transform: scale3d(1, 0.5, 1);
-  }
 }
 
 .avatar {
