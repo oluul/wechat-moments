@@ -41,7 +41,7 @@ class Post extends Component {
         <div className={styles.avatar}>
           <img src={user.avatar} alt={user.username} />
         </div>
-        <section>
+        <section className={styles.body}>
           <div className={styles.username}>{ user.username }</div>
           <div className={styles.content}>
             { content }

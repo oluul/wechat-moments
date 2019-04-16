@@ -46,7 +46,9 @@ const globalInitialState = {
       content: "我没开出门啊，大哥！",
       images: [
         { id: 'i-001', url: '/assets/avatar-normal.jpg', w: 400, h: 400 },
-        { id: 'i-002', url: '/assets/avatar-normal.jpg', w: 400, h: 400 }
+        { id: 'i-002', url: '/assets/avatar-normal.jpg', w: 400, h: 400 },
+        { id: 'i-003', url: '/assets/avatar-normal.jpg', w: 400, h: 400 },
+        { id: 'i-004', url: '/assets/avatar-normal.jpg', w: 400, h: 400 },
       ],
       createdAt: 1555274569270
     },

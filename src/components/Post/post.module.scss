@@ -14,6 +14,10 @@
   }
 }
 
+.body {
+  flex: 1;
+}
+
 .username {
   font-size: 16px;
   color: #576B94;
@@ -58,12 +62,12 @@
     grid-template-columns: 1fr;
 
     .img {
-      max-height: 180px;
+      max-height: 246px;
     }
   }
 
-  &:global(.len_2),
   &:global(.len_4) {
+    width: 165px;
     grid-template-columns: repeat(2, 1fr);
   }
 }
