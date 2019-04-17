@@ -3,6 +3,11 @@
 @import '~photoswipe/dist/default-skin/default-skin.css';
 
 body {
-  font-family: "SF Pro SC", "SF Pro Text", "SF Pro Icons", "PingFang SC", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  font-family: -apple-system-font, "SF Pro SC", "SF Pro Text", "SF Pro Icons", "PingFang SC", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
   font-size: 14px;
+  user-select: none;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
 }

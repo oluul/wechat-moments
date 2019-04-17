@@ -19,7 +19,7 @@ const globalInitialState = {
       id: "p-001",
       user: {
         id: 'u-001',
-        username: "Boldoo",
+        username: "TMC-庆子",
         avatar: process.env.PUBLIC_URL + '/assets/avatar-1.jpg'
       },
       content: "我今天就是不讲理了！你现在打110也好，打工商局也好，把我带走，把我曝光！我打110人家不接，我打工商局人家不接，我希望你们能给我一个机会，让我被捉走。我就不信这个天下没有说理的地方！66万买个车，1公里都没开，就要更换发动机，还被迫让我接受这是三包。我没开出门啊，大哥！",
@@ -34,6 +34,7 @@ const globalInitialState = {
         { id: 'i-008', url: '/assets/avatar-normal.jpg', w: 400, h: 400 },
         { id: 'i-009', url: '/assets/avatar-normal.jpg', w: 400, h: 400 }
       ],
+      address: { locname: 'Beijing · 故宫' },
       createdAt: 1555254569270
     },
     {

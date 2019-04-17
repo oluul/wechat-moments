@@ -21,6 +21,7 @@
 .username {
   font-size: 16px;
   color: #576B94;
+  font-weight: bold;
 }
 
 .content {
@@ -28,6 +29,7 @@
   font-size: 16px;
   line-height: 1.2;
   color: #212121;
+  user-select: text;
 }
 
 .images {
@@ -72,7 +74,22 @@
   }
 }
 
+.address {
+  margin-bottom: 5px;
+
+  a {
+    color: #576B94;
+    font-size: 14px;
+    text-decoration: none;
+
+    &:active {
+      background-color: #c7c7c5;
+    }
+  }
+}
+
 .footer {
+  padding-top: 5px;
   display: flex;
   justify-content: space-between;
 }
@@ -94,7 +111,7 @@
   border-radius: 3px;
 
   &:active {
-    background-color: #e5e5e5;
+    background-color: #dedede;
   }
 
   i {

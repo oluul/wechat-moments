@@ -34,7 +34,7 @@ class Post extends Component {
   }
 
   render() {
-    const { user, images = [], content, createdAt } = this.props.post
+    const { user, images = [], content, createdAt, address } = this.props.post
 
     return (
       <div className={classnames(this.props.className, styles.post)}>
@@ -48,6 +48,13 @@ class Post extends Component {
           </div>
           {
             !!images.length && this.renderImages()
+          }
+          {
+            address && (
+              <div className={styles.address}>
+                <a href="javascript: void(0)">{ address.locname }</a>
+              </div>
+            )
           }
           <footer className={styles.footer}>
             <div className={styles.createdAt}>
