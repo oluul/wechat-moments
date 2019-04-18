@@ -40,7 +40,7 @@ npm run build
 - [x] implement like
 - [x] implement comment
 - [x] single image layout
-- [ ] delete comment
-- [ ] automatic update time
+- [x] automatic update time
 - [ ] normalize user data(redux)
+- [ ] delete comment
 - [ ] support video/link
