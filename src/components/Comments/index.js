@@ -16,12 +16,14 @@ class Comments extends Component {
       return alert('DELETE')
     }
 
-    const action = actions.creatComment(this.props.post.id, {
-      content: `模拟native输入法，回复随机内容 - ${Math.random().toString(36).substr(2)}`,
-      reply: item.user
-    })
+    if (window.confirm('提示：模拟native输入法，即将插入新内容')) {
+      const action = actions.creatComment(this.props.post.id, {
+        content: `模拟native输入法，回复随机内容 - ${Math.random().toString(36).substr(2)}`,
+        reply: item.user
+      })
 
-    this.props.dispatch(action)
+      this.props.dispatch(action)
+    }
   }
 
   render() {
