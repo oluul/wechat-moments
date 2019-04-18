@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import moment from 'moment'
 import classnames from 'classnames'
 import * as actions from '../../store/actions'
 import styles from './post.module.scss'
@@ -8,6 +7,7 @@ import initPhotoSwipeFromDOM from './lib.gallery'
 import calSize from './lib.calSize'
 import Comments from '../Comments'
 import MoreBtn from '../MoreBtn'
+import AutomaticUpdateTime from '../AutomaticUpdateTime'
 
 function noop(evt) {
   evt.preventDefault()
@@ -107,7 +107,7 @@ class Post extends Component {
           }
           <footer className={styles.footer}>
             <div className={styles.createdAt}>
-              { moment(createdAt).fromNow()}
+              <AutomaticUpdateTime time={createdAt} />
             </div>
             <MoreBtn
               post={this.props.post}

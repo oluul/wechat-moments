@@ -12,7 +12,7 @@ class Comments extends Component {
   // TODO: optimize
   replyHandler = item => () => {
     if (item.user.id === this.props.profile.id) {
-      return alert('DELETE')
+      return alert('TODO 删除自己的评论')
     }
 
     if (window.confirm('提示：模拟native输入法，即将插入新内容')) {
