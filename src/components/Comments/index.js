@@ -35,38 +35,44 @@ class Comments extends Component {
     return (
       <div
         className={classnames(styles.wrap)}>
-        <div className={styles.likes}>
-          <i className={classnames('iconfont', styles.icon)}>&#xe64f;</i>
-          { likeList.map(d => (
-            <a className={styles.item} key={d.id} href="//google.com" onClick={noop}>
-              {d.user.name}
-            </a>
-          )) }
-        </div>
-        <div className={styles.comments}>
-          { comments.map(item => (
-            <div className={styles.item} key={item.id} onClick={this.replyHandler(item)}>
-              <div className={styles.head}>
-                <a
-                  href="#"
-                  onClick={noop}
-                  className={styles.uname}>{item.user.name}</a>
-                {item.reply && (
-                  <React.Fragment>
-                    <span className={styles.at}>@</span>
+        {!!likeList.length && (
+          <div className={classnames(styles.likes, likeList.length && styles.show)}>
+            <i className={classnames('iconfont', styles.icon)}>&#xe64f;</i>
+            { likeList.map(d => (
+              <a className={styles.item} key={d.id} href="//google.com" onClick={noop}>
+                {d.user.name}
+              </a>
+            )) }
+          </div>
+        )}
+        {
+          !!comments.length && (
+            <div className={classnames(styles.comments, comments.length && styles.show)}>
+              { comments.map(item => (
+                <div className={styles.item} key={item.id} onClick={this.replyHandler(item)}>
+                  <div className={styles.head}>
                     <a
                       href="#"
                       onClick={noop}
-                      className={styles.uname}>{item.reply.name}</a>
-                  </React.Fragment>
-                )}
-              </div>
-              <div className={styles.content}>
-                {item.content}
-              </div>
+                      className={styles.uname}>{item.user.name}</a>
+                    {item.reply && (
+                      <React.Fragment>
+                        <span className={styles.at}>@</span>
+                        <a
+                          href="#"
+                          onClick={noop}
+                          className={styles.uname}>{item.reply.name}</a>
+                      </React.Fragment>
+                    )}
+                  </div>
+                  <div className={styles.content}>
+                    {item.content}
+                  </div>
+                </div>
+              )) }
             </div>
-          )) }
-        </div>
+          )
+        }
       </div>
     )
   }

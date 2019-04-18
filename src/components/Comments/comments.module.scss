@@ -51,7 +51,7 @@
   }
 }
 
-.comments {
+.likes + .comments {
   &:before {
     content: '';
     display: block;
@@ -59,10 +59,12 @@
     border-bottom: 1px solid #f6f7f7;
     transform: scale3d(1, 0.5, 1);
   }
+}
 
+.comments {
   .item {
     padding: 3px 8px;
-    line-height: 20px;
+    line-height: 18px;
     overflow: hidden;
 
     &:active {
@@ -70,7 +72,7 @@
     }
 
     .head {
-      height: 20px;
+      height: 18px;
       float: left;
 
       &:after {

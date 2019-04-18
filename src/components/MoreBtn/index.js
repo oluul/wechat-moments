@@ -29,7 +29,7 @@ export default class MoreBtn extends Component {
     }
   }
 
-  likeHandler = event => {
+  likeHandler = () => {
     const that = this
     const $icon = this.$heartIcon.current
     const $heart = $icon.cloneNode(true)
@@ -42,6 +42,11 @@ export default class MoreBtn extends Component {
     that.props.likeHandler()
     $heart.classList.add(styles.heartbeat)
     $icon.append($heart)
+  }
+
+  commentHandler = () => {
+    this.props.commentHandler()
+    this.toggleLayer()
   }
 
   bindGlobalEvent = () => {
@@ -93,7 +98,7 @@ export default class MoreBtn extends Component {
                     <span>{post.liked ? 'Cancel' : 'Like'}</span>
                   </div>
                   <div className={styles.sep}></div>
-                  <div className={styles.btn} onClick={this.props.commentHandler}>
+                  <div className={styles.btn} onClick={this.commentHandler}>
                     <i className={classnames('iconfont', styles.icon)}>&#xe6ca;</i>
                     <span>Comment</span>
                   </div>
