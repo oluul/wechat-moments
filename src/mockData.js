@@ -31,7 +31,7 @@ export default {
         { id: 'i-009', url: '/assets/avatar-normal.jpg', w: 400, h: 400 }
       ],
       address: { locname: 'Beijing · 故宫' },
-      createdAt: Date.now()- 42*1000,
+      createdAt: Date.now()- 40*1000,
       likeList: [{
         id: randonId(),
         createdAt: Date.now(),
@@ -84,7 +84,7 @@ export default {
         { id: 'i-003', url: '/assets/tmp-img-3.jpg', w: 1400, h: 100 },
         { id: 'i-004', url: '/assets/tmp-img-4.jpg', w: 100, h: 1400 }
       ],
-      createdAt: Date.now() - 1234876543,
+      createdAt: Date.now()- 87*1000
     },
     {
       id: "p-002",
@@ -97,7 +97,7 @@ export default {
       images: [
         { id: 'i-001', url: '/assets/avatar-normal.jpg', w: 400, h: 400 }
       ],
-      createdAt: Date.now() - 876543223
+      createdAt: Date.now()- 43.99*(1000*60)
     },
     {
       id: randonId(),
@@ -110,7 +110,7 @@ export default {
       images: [
         { id: 'i-001', url: '/assets/tmp-img-1.jpg', w: 1080, h: 6752 }
       ],
-      createdAt: Date.now() - 21345678
+      createdAt: Date.now()
     },
     {
       id: randonId(),

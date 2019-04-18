@@ -1,35 +1,60 @@
 import { Component } from 'react'
 import moment from 'moment'
 
-// TODO: 可以做成HOC组件，传入 timestamp，
-// 对比当前时间与传入时间的差值，计算出下一次大约何时去执行。
-// 如差值为：1235 时是千位，所以1s后再更新
-// 只需一个定时器即可，单例模式
-
-var listeners = []
-function runTimer() {
-  setTimeout(() => {
-    for (let cb of listeners) {
-      cb()
-    }
-
-    runTimer()
-  }, 2000)
-}
-
-function addTimerListener(cb) {
-  listeners.push(cb)
-
-  return function removeListener() {
-    listeners = listeners.filter(_cb => _cb !== cb)
-  }
-}
-
-runTimer()
+moment.langData('en')._relativeTime.s = "just now"
+moment.relativeTimeThreshold('ss', 3)
 
 export default class extends Component {
+  calNextUpateTime() {
+    const fromNow = Date.now() - this.props.time
+    const sec = 1000
+    const min = sec * 60
+    const hour = min * 60
+
+    // refer http://momentjs.com/docs/#/displaying/fromnow/
+    if (fromNow / sec < 45) { // < 45s  (a few seconds ago)
+      // NOTE: 每秒钟的频率仅为演示，真实环境中应大于1min
+      return fromNow % sec // Update every second
+
+    } else if (fromNow / sec < 90) { // < 90s  (a minute ago)
+      return (90 - fromNow / sec) * sec
+
+    } else if (fromNow / min < 45) { // < 45min  (x minutes ago)
+      return fromNow % min // Update every minute
+
+    } else if (fromNow / min < 90) { // < 90min  (an hour ago)
+      return (90 - fromNow / min) * min
+
+    } else if (fromNow / hour < 21) { // < 21hours  (x hours ago)
+      return fromNow % hour // Update every hours
+
+    } else {
+      // NOTE: 页面保持1小时以上的情况较少，忽略大于21小时的更新
+    }
+  }
+
+  shouldComponentUpdate() {
+    return false
+  }
+
+  runTimer() {
+    const delay = this.calNextUpateTime()
+
+    if (delay) {
+      this.timer = setTimeout(() => {
+        this.timer && clearTimeout(this.timer)
+        this.forceUpdate()
+        this.runTimer()
+      }, delay)
+    }
+  }
+
   componentDidMount() {
-    addTimerListener(this.forceUpdate.bind(this))
+    this.runTimer()
+  }
+
+  componentWillUnmount() {
+    this.timer && clearTimeout(this.timer)
   }
 
   render() {
