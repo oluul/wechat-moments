@@ -3,7 +3,6 @@ import PhotoSwipe from 'photoswipe/dist/photoswipe'
 import PhotoSwipeUI_Default from 'photoswipe/dist/photoswipe-ui-default'
 
 export default function ($container, id) {
-
   // parse slide data (url, title, size ...) from DOM elements
   var parseThumbnailElements = function (el) {
     var thumbElements = el.childNodes,
@@ -78,8 +77,6 @@ export default function ($container, id) {
       nodeIndex++;
     }
 
-
-
     if (index >= 0) {
       // open PhotoSwipe if valid index found
       openPhotoSwipe(index, clickedGallery);
@@ -104,13 +101,12 @@ export default function ($container, id) {
 
       getThumbBoundsFn: function (index) {
         // See Options -> getThumbBoundsFn section of documentation for more info
-        var thumbnail = items[index].el, // find thumbnail
+        var thumbnail = items[index].el.childNodes[0] || items[index].el, // find thumbnail
           pageYScroll = window.pageYOffset || document.documentElement.scrollTop,
           rect = thumbnail.getBoundingClientRect();
 
         return { x: rect.left, y: rect.top + pageYScroll, w: rect.width };
       }
-
     };
 
     options.index = parseInt(index, 10);
@@ -127,6 +123,8 @@ export default function ($container, id) {
     // Pass data to PhotoSwipe and initialize it
     gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, options);
     gallery.init();
+
+    window.gallery= gallery
   };
 
   $container.setAttribute('data-pswp-uid', id);

@@ -88,10 +88,10 @@ class Post extends Component {
     return (
       <div className={classnames(this.props.className, styles.post)}>
         <div className={styles.avatar}>
-          <img src={user.avatar} alt={user.username} />
+          <img src={user.avatar} alt={user.name} />
         </div>
         <section className={styles.body}>
-          <a href="//g.cn" onClick={noop} className={styles.username}>{ user.username }</a>
+          <a href="//g.cn" onClick={noop} className={styles.username}>{ user.name }</a>
           <div className={styles.content}>
             { content }
           </div>

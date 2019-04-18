@@ -18,7 +18,7 @@ class Comments extends Component {
     if (window.confirm('提示：模拟native输入法，即将插入新内容')) {
       const action = actions.creatComment(this.props.post.id, {
         content: `模拟native输入法，回复随机内容 - ${Math.random().toString(36).substr(2)}`,
-        reply: item.user
+        reply: item.user.id
       })
 
       this.props.dispatch(action)

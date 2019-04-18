@@ -41,6 +41,6 @@ npm run build
 - [x] implement comment
 - [x] single image layout
 - [x] automatic update time
-- [ ] normalize user data(redux)
+- [x] normalize user data(redux)
 - [ ] delete comment
 - [ ] support video/link

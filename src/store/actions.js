@@ -4,11 +4,11 @@ export function like(postId) {
   return (dispatch, getState) => {
     const user = getState().profile
     const payload = {
-      id: postId,
+      postId,
       data: {
         id: Math.random().toString(36).substr(2),
         createdAt: Date.now(),
-        user: user
+        user: user.id
       }
     }
 
@@ -26,11 +26,11 @@ export function creatComment(postId, comment) {
   return (dispatch, getState) => {
     const user = getState().profile
     const payload = {
-      id: postId,
+      postId,
       data: {
         id: Math.random().toString(36).substr(2),
         createdAt: Date.now(),
-        user,
+        user: user.id,
         ...comment
       }
     }

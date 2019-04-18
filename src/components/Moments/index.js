@@ -1,13 +1,16 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { denormalize } from 'normalizr'
+import * as schema from '../../store/schema'
 import Post from '../Post'
 import styles from './moments.module.scss'
 
+/**
+ * Moments
+ * Include paging logic // TODO
+ * @extends Component
+ */
 class Moments extends Component {
-  static defaultProps = {
-    posts: []
-  }
-
   render() {
     return (
       <div className={styles.moments}>
@@ -22,9 +25,14 @@ class Moments extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = ({ entities }) => {
+  const { posts, users } = entities
+
   return {
-    posts: state.posts
+    posts: denormalize(posts.allIds, [schema.post], {
+      posts: posts.byId,
+      users: users.byId
+    })
   }
 }
 
