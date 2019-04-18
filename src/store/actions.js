@@ -8,11 +8,7 @@ export function like(postId) {
       data: {
         id: Math.random().toString(36).substr(2),
         createdAt: Date.now(),
-        user: {
-          id: user.id,
-          name: user.name,
-          avatar: user.avatar
-        }
+        user: user
       }
     }
 
@@ -23,5 +19,25 @@ export function like(postId) {
         payload
       })
     }, 300)
+  }
+}
+
+export function creatComment(postId, comment) {
+  return (dispatch, getState) => {
+    const user = getState().profile
+    const payload = {
+      id: postId,
+      data: {
+        id: Math.random().toString(36).substr(2),
+        createdAt: Date.now(),
+        user,
+        ...comment
+      }
+    }
+
+    dispatch({
+      type: actionTypes.POST_CREATE_COMMENT,
+      payload
+    })
   }
 }

@@ -19,9 +19,16 @@
 }
 
 .username {
+  display: inline-block;
   font-size: 16px;
   color: #576B94;
   font-weight: bold;
+  text-decoration: none;
+
+  &:active {
+    border-radius: 1px;
+    background-color: #cdd2dd;
+  }
 }
 
 .content {
@@ -83,6 +90,7 @@
     text-decoration: none;
 
     &:active {
+      border-radius: 1px;
       background-color: #c7c7c5;
     }
   }
@@ -97,49 +105,4 @@
 .createdAt {
   color: #B4B4B4;
   font-size: 15px;
-}
-
-.likeBox {
-  position: relative;
-  margin: 6px -2px 6px 0;
-  padding: 0 8px;
-  background-color: #f3f3f4;
-  line-height: 26px;
-
-  &:before {
-    position: absolute;
-    left: 10px;
-    top: -12px;
-    content: '';
-    width: 0;
-    height: 0;
-    border-width: 6px;
-    border-style: solid;
-    border-color: transparent transparent #f3f3f4 transparent;
-  }
-
-  .icon {
-    margin-right: 6px;
-    color: #5b6a91;
-    font-size: 14px;
-    font-weight: bold;
-  }
-
-  .item {
-    margin: 0 2px;
-    display: inline-block;
-    color: #5b6a91;
-    text-decoration: none;
-    font-weight: bold;
-
-    &+.item {
-      &:before {
-        margin-right: 3px;
-        content: ', ';
-        font-family: Verdana;
-        color: #414141;
-        font-size: 12px;
-      }
-    }
-  }
 }

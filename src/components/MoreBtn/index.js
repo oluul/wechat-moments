@@ -93,7 +93,7 @@ export default class MoreBtn extends Component {
                     <span>{post.liked ? 'Cancel' : 'Like'}</span>
                   </div>
                   <div className={styles.sep}></div>
-                  <div className={styles.btn}>
+                  <div className={styles.btn} onClick={this.props.commentHandler}>
                     <i className={classnames('iconfont', styles.icon)}>&#xe6ca;</i>
                     <span>Comment</span>
                   </div>

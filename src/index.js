@@ -45,7 +45,34 @@ const globalInitialState = {
           avatar: null
         }
       }],
-      liked: false
+      liked: false,
+      comments: [
+        {
+          id: Math.random().toString(36).substr(2),
+          createdAt: Date.now(),
+          content: '你好王老吉, 你好王老吉你好王老吉',
+          user: {
+            id: Math.random().toString(36).substr(2),
+            name: '王老五',
+            avatar: null
+          }
+        },
+        {
+          id: Math.random().toString(36).substr(2),
+          createdAt: Date.now(),
+          content: '你好王老吉, 你好王老吉你好王老吉, 你好王老吉你好王老吉, 你好王老吉你好王老吉, 你好王老吉你好王老吉, 你好王老吉',
+          user: {
+            id: Math.random().toString(36).substr(2),
+            name: '王老五',
+            avatar: null
+          },
+          reply: {
+            id: Math.random().toString(36).substr(2),
+            name: '王老吉',
+            avatar: null
+          }
+        }
+      ]
     },
     {
       id: "p-002",

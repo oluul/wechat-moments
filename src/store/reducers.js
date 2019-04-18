@@ -23,6 +23,19 @@ export default combineReducers({
           return post || _post
         })
 
+      case actionTypes.POST_CREATE_COMMENT:
+        return state.map(_post => {
+          var post
+
+          if (_post.id === action.payload.id) {
+            post = Object.assign({}, _post)
+            post.comments = post.comments || []
+            post.comments.push(action.payload.data)
+          }
+
+          return post || _post
+        })
+
 			default:
 				return state
 		}

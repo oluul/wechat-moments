@@ -5,6 +5,7 @@ import classnames from 'classnames'
 import * as actions from '../../store/actions'
 import styles from './post.module.scss'
 import initPhotoSwipeFromDOM from './lib.gallery'
+import Comments from '../Comments'
 import MoreBtn from '../MoreBtn'
 
 function noop(evt) {
@@ -18,6 +19,14 @@ class Post extends Component {
 
   likeHandler = () => {
     const action = actions.like(this.props.post.id)
+
+    this.props.dispatch(action)
+  }
+
+  commentHandler = () => {
+    const action = actions.creatComment(this.props.post.id, {
+      content: `模拟native输入法，写入随机内容 - ${Math.random().toString(36).substr(2)}`
+    })
 
     this.props.dispatch(action)
   }
@@ -53,8 +62,10 @@ class Post extends Component {
       content,
       createdAt,
       address,
-      likeList = []
+      likeList = [],
+      comments = []
     } = this.props.post
+    const showCommentBox = !!(likeList.length || comments.length)
 
     return (
       <div className={classnames(this.props.className, styles.post)}>
@@ -62,7 +73,7 @@ class Post extends Component {
           <img src={user.avatar} alt={user.username} />
         </div>
         <section className={styles.body}>
-          <div className={styles.username}>{ user.username }</div>
+          <a href="//g.cn" onClick={noop} className={styles.username}>{ user.username }</a>
           <div className={styles.content}>
             { content }
           </div>
@@ -80,20 +91,12 @@ class Post extends Component {
             <div className={styles.createdAt}>
               { moment(createdAt).fromNow()}
             </div>
-            <MoreBtn post={this.props.post} likeHandler={this.likeHandler} />
+            <MoreBtn
+              post={this.props.post}
+              likeHandler={this.likeHandler}
+              commentHandler={this.commentHandler}/>
           </footer>
-          {
-            !!likeList.length && (
-              <div className={styles.likeBox}>
-                <i className={classnames('iconfont', styles.icon)}>&#xe64f;</i>
-                { likeList.map(d => (
-                  <a className={styles.item} key={d.id} href="//google.com" onClick={noop}>
-                    {d.user.name}
-                  </a>
-                )) }
-              </div>
-            )
-          }
+          <Comments post={this.props.post} />
         </section>
       </div>
     )

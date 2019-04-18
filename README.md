@@ -38,7 +38,7 @@ npm run build
 - [x] image gallery
 - [x] display location
 - [x] implement like
-- [ ] implement comment
+- [x] implement comment
 - [ ] automatic update time
 - [ ] normalize user data(redux)
 - [ ] support video/link
