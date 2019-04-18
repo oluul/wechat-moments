@@ -34,8 +34,6 @@ export default function ($container, id) {
       items.push(item);
     }
 
-    console.log('items:', items)
-
     return items;
   };
 

@@ -39,7 +39,7 @@ npm run build
 - [x] display location
 - [x] implement like
 - [x] implement comment
-- [ ] single image layout
+- [x] single image layout
 - [ ] delete comment
 - [ ] automatic update time
 - [ ] normalize user data(redux)

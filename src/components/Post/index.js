@@ -5,6 +5,7 @@ import classnames from 'classnames'
 import * as actions from '../../store/actions'
 import styles from './post.module.scss'
 import initPhotoSwipeFromDOM from './lib.gallery'
+import calSize from './lib.calSize'
 import Comments from '../Comments'
 import MoreBtn from '../MoreBtn'
 
@@ -24,31 +25,51 @@ class Post extends Component {
   }
 
   commentHandler = () => {
-    const action = actions.creatComment(this.props.post.id, {
-      content: `模拟native输入法，写入随机内容 - ${Math.random().toString(36).substr(2)}`
-    })
+    if (window.confirm('提示：模拟native输入法，即将插入新内容')) {
+      const action = actions.creatComment(this.props.post.id, {
+        content: `模拟native输入法，写入随机内容 - ${Math.random().toString(36).substr(2)}`
+      })
 
-    this.props.dispatch(action)
+      this.props.dispatch(action)
+    }
   }
 
   renderImages() {
     const { images } = this.props.post
-    const wrapClass = 'len_' + images.length
+
+    if (images.length === 1) {
+      const img = images[0]
+      const [width, height, wrapWidth, wrapHeight] = calSize(img.w, img.h)
+
+      return (
+        <div
+          ref={ref => this.gallery = ref}
+          className={classnames(styles.images, styles.single)}>
+          <div
+            className={classnames('g-item', styles.item)}
+            data-width={img.w}
+            data-height={img.h}
+            data-url={img.url}
+            style={{ width: wrapWidth, height: wrapHeight }}>
+            <img src={img.url} style={{ width, height}} alt="" />
+          </div>
+        </div>
+      )
+    }
 
     return (
       <div
         ref={ref => this.gallery = ref}
-        className={classnames(styles.images, wrapClass)}>
+        className={classnames(styles.images, styles.grid, `len-${images.length}`)}>
         {
           images.map(img => (
             <div
               key={img.id}
-              className={classnames('g-item', styles.img)}
+              className={classnames('g-item', styles.item)}
               data-width={img.w}
               data-height={img.h}
               data-url={img.url}
-              style={{ backgroundImage: `url(${img.url})`}}>
-            </div>
+              style={{backgroundImage: `url(${img.url})`}} />
           ))
         }
       </div>
@@ -61,11 +82,8 @@ class Post extends Component {
       images = [],
       content,
       createdAt,
-      address,
-      likeList = [],
-      comments = []
+      address
     } = this.props.post
-    const showCommentBox = !!(likeList.length || comments.length)
 
     return (
       <div className={classnames(this.props.className, styles.post)}>

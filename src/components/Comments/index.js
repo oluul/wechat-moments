@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import moment from 'moment'
 import classnames from 'classnames'
 import * as actions from '../../store/actions'
 import styles from './comments.module.scss'
@@ -54,14 +53,14 @@ class Comments extends Component {
                 <div className={styles.item} key={item.id} onClick={this.replyHandler(item)}>
                   <div className={styles.head}>
                     <a
-                      href="#"
+                      href="//g.cn"
                       onClick={noop}
                       className={styles.uname}>{item.user.name}</a>
                     {item.reply && (
                       <React.Fragment>
                         <span className={styles.at}>@</span>
                         <a
-                          href="#"
+                          href="//g.cn"
                           onClick={noop}
                           className={styles.uname}>{item.reply.name}</a>
                       </React.Fragment>

@@ -40,44 +40,49 @@
 }
 
 .images {
-  max-width: 246px;
+  width: 240px;
   margin: 10px 0;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  margin-top: -5px;
-  margin-left: -5px;
 
-  .img {
-    position: relative;
-    margin-left: 5px;
-    margin-top: 5px;
+  &.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 5px;
+
+    &:global(.len-4) {
+      width: 158px;
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .item {
+      position: relative;
+      font-size: 0;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+
+      &:after {
+        content: '';
+        display: block;
+        padding-top: 100%;
+      }
+    }
+  }
+
+  &.single {
     font-size: 0;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
 
-    &:after {
-      content: '';
-      display: block;
-      padding-top: 100%;
+    .item {
+      display: inline-block;
+      position: relative;
+      overflow: hidden;
+
+      img {
+        position: relative;
+        left: 50%;
+        top: 50%;
+        transform: translate3d(-50%, -50%, 0);
+      }
     }
-  }
-
-  img {
-    max-width: 100%;
-  }
-
-  &:global(.len_1) {
-    grid-template-columns: 1fr;
-
-    .img {
-      max-height: 246px;
-    }
-  }
-
-  &:global(.len_4) {
-    width: 165px;
-    grid-template-columns: repeat(2, 1fr);
   }
 }
 
