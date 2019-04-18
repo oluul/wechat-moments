@@ -2,12 +2,33 @@
 @import '~photoswipe/dist/photoswipe.css';
 @import '~photoswipe/dist/default-skin/default-skin.css';
 
+@font-face {
+  font-family: 'iconfont';  /* project id 1148474 */
+  src: url('//at.alicdn.com/t/font_1148474_4q14ai22t.eot');
+  src: url('//at.alicdn.com/t/font_1148474_4q14ai22t.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_1148474_4q14ai22t.woff2') format('woff2'),
+  url('//at.alicdn.com/t/font_1148474_4q14ai22t.woff') format('woff'),
+  url('//at.alicdn.com/t/font_1148474_4q14ai22t.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_1148474_4q14ai22t.svg#iconfont') format('svg');
+}
+
 body {
   font-family: -apple-system-font, "SF Pro SC", "SF Pro Text", "SF Pro Icons", "PingFang SC", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
   font-size: 14px;
   user-select: none;
+  background-color: #fff;
+  -webkit-font-smoothing: antialiased;
 }
 
 * {
   -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }

@@ -1,12 +1,25 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import moment from 'moment'
 import classnames from 'classnames'
+import * as actions from '../../store/actions'
 import styles from './post.module.scss'
 import initPhotoSwipeFromDOM from './lib.gallery'
+import MoreBtn from '../MoreBtn'
+
+function noop(evt) {
+  evt.preventDefault()
+}
 
 class Post extends Component {
   componentDidMount() {
     this.gallery && initPhotoSwipeFromDOM(this.gallery, this.props.post.id)
+  }
+
+  likeHandler = () => {
+    const action = actions.like(this.props.post.id)
+
+    this.props.dispatch(action)
   }
 
   renderImages() {
@@ -34,7 +47,14 @@ class Post extends Component {
   }
 
   render() {
-    const { user, images = [], content, createdAt, address } = this.props.post
+    const {
+      user,
+      images = [],
+      content,
+      createdAt,
+      address,
+      likeList = []
+    } = this.props.post
 
     return (
       <div className={classnames(this.props.className, styles.post)}>
@@ -52,7 +72,7 @@ class Post extends Component {
           {
             address && (
               <div className={styles.address}>
-                <a href="javascript: void(0)">{ address.locname }</a>
+                <a href="//google.com" onClick={noop}>{ address.locname }</a>
               </div>
             )
           }
@@ -60,15 +80,24 @@ class Post extends Component {
             <div className={styles.createdAt}>
               { moment(createdAt).fromNow()}
             </div>
-            <div className={styles.moreBtn}>
-              <i />
-              <i />
-            </div>
+            <MoreBtn post={this.props.post} likeHandler={this.likeHandler} />
           </footer>
+          {
+            !!likeList.length && (
+              <div className={styles.likeBox}>
+                <i className={classnames('iconfont', styles.icon)}>&#xe64f;</i>
+                { likeList.map(d => (
+                  <a className={styles.item} key={d.id} href="//google.com" onClick={noop}>
+                    {d.user.name}
+                  </a>
+                )) }
+              </div>
+            )
+          }
         </section>
       </div>
     )
   }
 }
 
-export default Post
+export default connect()(Post)

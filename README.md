@@ -36,8 +36,9 @@ npm run build
 ## Todos
 - [x] image grid layout (1-9)
 - [x] image gallery
-- [ ] implement like/comment
-- [ ] display location
+- [x] display location
+- [x] implement like
+- [ ] implement comment
 - [ ] automatic update time
 - [ ] normalize user data(redux)
 - [ ] support video/link

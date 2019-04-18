@@ -35,7 +35,17 @@ const globalInitialState = {
         { id: 'i-009', url: '/assets/avatar-normal.jpg', w: 400, h: 400 }
       ],
       address: { locname: 'Beijing · 故宫' },
-      createdAt: 1555254569270
+      createdAt: 1555254569270,
+      likeList: [{
+        id: Math.random().toString(36).substr(2),
+        createdAt: Date.now(),
+        user: {
+          id: Math.random().toString(36).substr(2),
+          name: '王老五',
+          avatar: null
+        }
+      }],
+      liked: false
     },
     {
       id: "p-002",
@@ -46,10 +56,7 @@ const globalInitialState = {
       },
       content: "我没开出门啊，大哥！",
       images: [
-        { id: 'i-001', url: '/assets/avatar-normal.jpg', w: 400, h: 400 },
-        { id: 'i-002', url: '/assets/avatar-normal.jpg', w: 400, h: 400 },
-        { id: 'i-003', url: '/assets/avatar-normal.jpg', w: 400, h: 400 },
-        { id: 'i-004', url: '/assets/avatar-normal.jpg', w: 400, h: 400 },
+        { id: 'i-001', url: '/assets/avatar-normal.jpg', w: 400, h: 400 }
       ],
       createdAt: 1555274569270
     },
