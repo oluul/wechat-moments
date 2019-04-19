@@ -2,6 +2,15 @@
 
 Wechat Moments `React` implement, Based on `Create React App`.
 
+## Features
+- Modern multiple image layout(9 grid && single)
+- Image Preview, zoom, gesture
+- Automatic update createdTime of post
+- comment/like && ui animation
+- Normalize redux state 
+  - :bookmark: [Normalizing State Shape](https://redux.js.org/recipes/structuring-reducers/normalizing-state-shape)
+  - :bookmark: [Dissecting Twitter’s Redux Store](https://medium.com/statuscode/dissecting-twitters-redux-store-d7280b62c6b1)
+
 ## OS Requirements
 - unix-like os
 - nodejs >= 10
@@ -31,8 +40,6 @@ npm run build
 ```
  // Not implemented
 ```
-
-
 
 ## Todos
 - [x] image grid layout (1-9)
