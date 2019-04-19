@@ -12,7 +12,11 @@ class Comments extends Component {
   // TODO: optimize
   replyHandler = item => () => {
     if (item.user.id === this.props.profile.id) {
-      return alert('TODO 删除自己的评论')
+      if (window.confirm('TODO: ActionSheet 组件待实现')) {
+        const action = actions.deleteComment(this.props.post.id, item.id)
+
+        return this.props.dispatch(action)
+      }
     }
 
     if (window.confirm('提示：模拟native输入法，即将插入新内容')) {

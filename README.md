@@ -43,6 +43,6 @@ npm run build
 - [x] single image layout
 - [x] automatic update time
 - [x] normalize user data(redux)
-- [ ] delete comment
-- [ ] action menu
+- [x] delete comment
+- [ ] implement ActionSheet component
 - [ ] support video/link

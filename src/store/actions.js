@@ -11,7 +11,7 @@ export function like(postId) {
         user: user.id
       }
     }
-    
+
     // NOTE: Simulate Slow Network
     setTimeout(() => {
       dispatch({
@@ -39,5 +39,15 @@ export function creatComment(postId, comment) {
       type: actionTypes.POST_CREATE_COMMENT,
       payload
     })
+  }
+}
+
+export function deleteComment(postId, commentId) {
+  return {
+    type: actionTypes.POST_DELETE_COMMENT,
+    payload: {
+      postId,
+      commentId
+    }
   }
 }

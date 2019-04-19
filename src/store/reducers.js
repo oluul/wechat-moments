@@ -35,6 +35,22 @@ function createComment(state, action) {
   }
 }
 
+function deleteComment(state, action) {
+  const { postId, commentId } = action.payload
+  const comments = state.byId[postId].comments
+
+  return {
+    ...state,
+    byId: {
+      ...state.byId,
+      [postId]: {
+        ...state.byId[postId],
+        comments: comments.filter(comment => comment.id !== commentId)
+      }
+    }
+  }
+}
+
 function postReducers(state = {allIds: []}, action) {
   switch (action.type) {
     case actionTypes.POST_LIKE:
@@ -42,6 +58,9 @@ function postReducers(state = {allIds: []}, action) {
 
     case actionTypes.POST_CREATE_COMMENT:
       return createComment(state, action)
+
+    case actionTypes.POST_DELETE_COMMENT:
+      return deleteComment(state, action)
 
     default:
       return state
