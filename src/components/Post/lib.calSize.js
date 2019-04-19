@@ -20,17 +20,17 @@ export default function calSize(width, height) {
 
   while (true) {
     if (isVertival) {
-      if (height < maxHeight || width <= minWidth) {
-        return [width, height, width, maxHeight] // final result
+      if (height <= maxHeight || width <= minWidth) {
+        return [width, height, width, Math.min(height, maxHeight)] // final result
       } else {
-        width--
+        width -= 1
         height = width / rate
       }
     } else {
-      if (width < maxWidth || height <= minHeight) {
-        return [width, height, maxWidth, height] // final result
+      if (width <= maxWidth || height <= minHeight) {
+        return [width, height, Math.min(width, maxWidth), height] // final result
       } else {
-        height--
+        height -= 1
         width = height * rate
       }
     }

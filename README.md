@@ -43,4 +43,5 @@ npm run build
 - [x] automatic update time
 - [x] normalize user data(redux)
 - [ ] delete comment
+- [ ] action menu
 - [ ] support video/link
