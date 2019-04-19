@@ -10,7 +10,8 @@ Wechat Moments `React` implement, Based on `Create React App`.
 ## Dependencies
 - react
 - redux/react-redux
-- photoswipe
+- [photoswipe](https://github.com/dimsemenov/PhotoSwipe)
+- [normalizr](https://github.com/paularmstrong/normalizr)
 
 ## How to run
 ```
