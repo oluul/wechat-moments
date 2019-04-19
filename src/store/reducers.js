@@ -1,10 +1,6 @@
 import { combineReducers } from 'redux'
 import * as actionTypes from './actionTypes'
 
-function userReducers(state = {allIds: []}, action) {
-  return state
-}
-
 function likeHandler(state, action) {
   const { postId, data } = action.payload
 
@@ -18,14 +14,14 @@ function likeHandler(state, action) {
         likeList: !state.byId[postId].liked ? [
           ...state.byId[postId].likeList,
           data
-        ] : state.byId[postId].likeList.filter(obj => obj.user.id !== data.user.id)
+        ] : state.byId[postId].likeList.filter(obj => obj.user !== data.user)
       }
     }
   }
 }
 
 function createComment(state, action) {
-  var { postId, data } = action.payload
+  const { postId, data } = action.payload
 
   return {
     ...state,
@@ -55,7 +51,9 @@ function postReducers(state = {allIds: []}, action) {
 export default combineReducers({
   entities: combineReducers({
     posts: postReducers,
-    users: userReducers
+    users: (state = {allIds: []}, action) => {
+      return state
+    }
   }),
   profile: (state = null, action) => {
 		return state
