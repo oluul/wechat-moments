@@ -11,7 +11,7 @@ export function like(postId) {
         user: user.id
       }
     }
-    console.log('payload:', payload)
+    
     // NOTE: Simulate Slow Network
     setTimeout(() => {
       dispatch({
